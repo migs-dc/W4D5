@@ -42,37 +42,42 @@ end
 # get the largest sum among them
 # use a hash and return the key with the largest value
 
+# def largest_contiguous_subsum(list)
+#   l = list.length # 1
+#   result = [] # 1
+#   hash = Hash.new(0) # 1
+
+#   (0...l).each do |i1| # n
+#     (0...l).each do |i2| # n
+#       result << list[i1..i2] if i2 >= i1 # 1
+#     end
+#   end
+
+#   result.each do |sub_arr| # n
+#     hash[sub_arr] = sub_arr.sum # 1
+#   end
+
+#   sorted_by_val = hash.sort_by { |k, v| v } # n, 
+#   sorted_by_val[-1][1] # 
+# end
+
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+# list = [2, 3, -6, 7, -6, 7]
+# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+# list = [-5, -1, -3]
+# p largest_contiguous_subsum(list) # => -1 (from [-1])
+
+# Phase II
+
 def largest_contiguous_subsum(list)
   l = list.length
-  result = []
-  hash = Hash.new(0)
+  (0...l)
+  (i...l)
 
-  (0...l).each do |i1|
-    (0...l).each do |i2|
-      result << list[i1..i2] if i2 >= i1
-    end
-  end
-
-  result.each do |sub_arr|
-    hash[sub_arr] = sub_arr.sum
-  end
-
-  sorted_by_val = hash.sort_by { |k, v| v }
-  sorted_by_val[-1][1]
 end
-
-list = [5, 3, -7]
-p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
-
-list = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
-
-list = [-5, -1, -3]
-p largest_contiguous_subsum(list) # => -1 (from [-1])
-
-
-
-
 
 
 # Question List
@@ -83,4 +88,3 @@ p largest_contiguous_subsum(list) # => -1 (from [-1])
     # arr[i] = arr[i+1]
     # arr[i+1] = temp
 
-    
