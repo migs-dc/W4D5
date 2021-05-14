@@ -1,4 +1,4 @@
-
+require 'byebug'
 
 # # Phase 1
 # def my_min(arr)
@@ -61,23 +61,53 @@ end
 #   sorted_by_val[-1][1] # 
 # end
 
-# list = [5, 3, -7]
-# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
-
-# list = [2, 3, -6, 7, -6, 7]
-# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
-
-# list = [-5, -1, -3]
-# p largest_contiguous_subsum(list) # => -1 (from [-1])
-
 # Phase II
 
 def largest_contiguous_subsum(list)
-  l = list.length
-  (0...l)
-  (i...l)
+  l = list.length           #constant
+  largest_sum = list.first  #constant
 
+  (0...l).each do |i1| # n
+    (i1...l).each do |i2| # n-m, where m = 0..i1
+      sum = list[i1..i2].sum                 #constant
+      largest_sum = sum if largest_sum < sum #constant
+    end
+  end
+
+  largest_sum #constant
 end
+
+def largest_contiguous_subsum(list) # [-5, -3, -1]
+  largest = list.first #-1
+  current_sum = list.first #-1
+
+  (1..list.length-1).each do |i| # -1
+    if current_sum < 0
+      current_sum = 0 # 0
+    end
+
+    current_sum += list[i] # 
+
+    if current_sum > largest
+      largest = current_sum
+    end
+
+  end
+  largest # -1
+end
+
+#time complexity 2n(n-m) + 3??
+
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+# # list = [2, 3, -6, 7, -6, 7]
+# # p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+list = [-5, -1, -3]
+p largest_contiguous_subsum(list) # => -1 (from [-1])
+
+
 
 
 # Question List
