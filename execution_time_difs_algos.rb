@@ -42,24 +42,24 @@ end
 # get the largest sum among them
 # use a hash and return the key with the largest value
 
-# def largest_contiguous_subsum(list)
-#   l = list.length # 1
-#   result = [] # 1
-#   hash = Hash.new(0) # 1
+def largest_contiguous_subsum(list)
+  # l = list.length # 1
+  # result = [] # 1
+  # hash = Hash.new(0) # 1
 
-#   (0...l).each do |i1| # n
-#     (0...l).each do |i2| # n
-#       result << list[i1..i2] if i2 >= i1 # 1
-#     end
-#   end
+  # (0...l).each do |i1| # n
+  #   (0...l).each do |i2| # n
+  #     result << list[i1..i2] if i2 >= i1 # 1
+  #   end
+  # end
 
-#   result.each do |sub_arr| # n
-#     hash[sub_arr] = sub_arr.sum # 1
-#   end
+  # result.each do |sub_arr| # n
+  #   hash[sub_arr] = sub_arr.sum # 1
+  # end
 
-#   sorted_by_val = hash.sort_by { |k, v| v } # n, 
-#   sorted_by_val[-1][1] # 
-# end
+  # sorted_by_val = hash.sort_by { |k, v| v } # n, 
+  # sorted_by_val[-1][1] # 
+end
 
 # Phase II
 
@@ -77,35 +77,36 @@ def largest_contiguous_subsum(list)
   largest_sum #constant
 end
 
-def largest_contiguous_subsum(list) # [-5, -3, -1]
-  largest = list.first #-1
-  current_sum = list.first #-1
+def largest_contiguous_subsum(list) # [2, 3, -6, 7, -6, 7]
+  largest = list.first # constant
+  current_sum = list.first # constant
 
-  (1..list.length-1).each do |i| # -1
-    if current_sum < 0
-      current_sum = 0 # 0
+  (1..list.length-1).each do |i| # 
+    if current_sum < 0 #  constant      when we reset the largest, that's where we start the subarray
+      current_sum = 0 #
     end
 
-    current_sum += list[i] # 
+    current_sum += list[i] #
 
-    if current_sum > largest
+    if current_sum > largest 
       largest = current_sum
     end
 
   end
-  largest # -1
+  largest #
+
 end
 
 #time complexity 2n(n-m) + 3??
 
-# list = [5, 3, -7]
+# list = [5, 3, 7]
 # p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
 
-# # list = [2, 3, -6, 7, -6, 7]
-# # p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+list = [2, 3, -6, 7, -6, 7]
+p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
 
-list = [-5, -1, -3]
-p largest_contiguous_subsum(list) # => -1 (from [-1])
+# list = [-5, -1, -3]
+# p largest_contiguous_subsum(list) # => -1 (from [-1])
 
 
 
@@ -117,4 +118,6 @@ p largest_contiguous_subsum(list) # => -1 (from [-1])
     # temp = arr[i]
     # arr[i] = arr[i+1]
     # arr[i+1] = temp
-
+      # vs
+    # if arr[i] < arr[i+1]
+    # arr[i+1], arr[i] = arr[i], arr[i+1]
